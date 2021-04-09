@@ -117,11 +117,11 @@ class LutkarElement {
         rectangle.style.border = `3px solid ${options.color}`
         rectangle.style.display = 'block'
         rectangle.style.height = rect.height + options.top + options.bottom + 'px'
-        rectangle.style.left = rect.x - options.left + 'px'
+        rectangle.style.left = window.scrollX + rect.x - options.left + 'px'
         rectangle.style.margin = '0px'
         rectangle.style.padding = '0px'
         rectangle.style.position = 'absolute'
-        rectangle.style.top = rect.y - options.top + 'px'
+        rectangle.style.top = window.scrollY + rect.y - options.top + 'px'
         rectangle.style.width = rect.width + options.left + options.right + 'px'
         rectangle.style.zIndex = '99999'
 
@@ -152,12 +152,12 @@ class LutkarElement {
         textBox.style.fontFamily = 'Verdana, sans-serif'
         textBox.style.fontSize = options.fontSize + 'px'
         textBox.style.fontWeight = 'bold'
-        textBox.style.left = rect.x + 'px'
+        textBox.style.left = window.scrollX + rect.x + 'px'
         textBox.style.margin = '0'
         textBox.style.padding = '0'
         textBox.style.position = 'absolute'
         textBox.style.right = options.right + 'px'
-        textBox.style.top = rect.y + rect.height + options.top + 'px'
+        textBox.style.top = window.scrollY + rect.y + rect.height + options.top + 'px'
         textBox.style.zIndex = '99999'
 
         window.document.body.appendChild(textBox)

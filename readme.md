@@ -16,9 +16,9 @@ Lutkar is based on `puppeteer`, and uses  `puppeteer-extra` and `puppeteer-extra
 # Structure
 
 - `helpers/`: Chromium (Puppeteer/Chromium), Mocha (mocha.js), Utilities, etc
+- `plugins/`: lutkar (Puppeteer plugin)
 - `pages/`: Page Objects
 - `test/`: Test suites (*.spec.js) 
-- `plugins`: lutkar (Puppeteer plugin)
 
 
 

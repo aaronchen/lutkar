@@ -1,0 +1,12 @@
+bail: false
+recursive: true
+reporter: mochawesome
+reporter-option:
+  - 'quiet=true'
+  - 'reportFilename=report'
+  - 'consoleReporter=spec'
+require:
+  - helpers/mocha.js
+spec: test/**/*.spec.js
+timeout: 0
+ui: bdd

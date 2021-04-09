@@ -1,0 +1,19 @@
+// https://eslint.org/docs/user-guide/configuring/
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "mocha": true,
+    "node": true
+  },
+  "extends": ["prettier-standard"],
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "ecmaVersion": 12,
+    "requireConfigFile": false
+  },
+  "plugins": ["@babel/plugin-proposal-class-properties"],
+  "rules": {
+    "prettier/prettier": "off"
+  }
+}

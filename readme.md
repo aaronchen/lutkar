@@ -5,9 +5,9 @@ cd lutkar
 npm install
 ```
 
-# Automation: Lutkar (Puppeteer)
+# Automation: Lutkar (Puppeteer Plugin)
 
-Lutkar is based on `puppeteer`, and uses  `puppeteer-extra` and `puppeteer-extra-plugin` to extend its automation capabilities
+Lutkar is based on `puppeteer`, and uses  `puppeteer-extra` and `puppeteer-extra-plugin` to enhance its automation features.
 
 # Test Framework: Mocha.js
 

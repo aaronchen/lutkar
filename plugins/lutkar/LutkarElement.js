@@ -47,7 +47,7 @@ class LutkarElement {
   }
 
   async addClass(cssClass) {
-    await this.evaluate((element, cssClass) => element.classList.add(...cssClass.split(' ')), cssClass)
+    await this.evaluate((element, cssClass) => element.classList.add(...cssClass.split(/\s+/)), cssClass)
   }
 
   async blur() {
@@ -61,6 +61,7 @@ class LutkarElement {
 
     for (const childProperty of childrenProperties.values()) {
       const childElement = childProperty.asElement()
+
       if (childElement) {
         children.push(LutkarHelper.lutkarifyElement(childElement))
       }
@@ -77,7 +78,7 @@ class LutkarElement {
     if (LutkarHelper.isXPath(selector)) {
       const expression = `./ancestor-or-self::${selector.replace(/^\/+/, '')}`
       const parents = await this.$x(expression)
-      return parents.length > 0 ? parents[0] : null
+      return parents.length ? parents[0] : null
     } else {
       const elementHandle = await this.evaluateHandle((element, selector) => element.closest(selector), selector)
       return LutkarHelper.lutkarifyElement(elementHandle.asElement())
@@ -85,7 +86,7 @@ class LutkarElement {
   }
 
   async controlClick(cmdKey = 'Control') {
-    const page = this._page || this._frame._page
+    const page = this._page || this._frameManager._page
 
     await page.keyboard.down(cmdKey)
     await this.click()
@@ -93,7 +94,7 @@ class LutkarElement {
   }
 
   async copyAndPaste(text, cmdKey = 'Control') {
-    const page = this._page || this._frame._page
+    const page = this._page || this._frameManager._page
 
     await page.copyToClipboard(text)
     await this.focus()
@@ -296,7 +297,7 @@ class LutkarElement {
       }
     }
 
-    if (by) {
+    if (by && selectedOptions.length) {
       const bySelected = []
 
       if (by == 'value') {

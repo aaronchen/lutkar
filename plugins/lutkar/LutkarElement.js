@@ -29,8 +29,8 @@ class LutkarElement {
   }
 
   async $eval(selector, pageFunction, ...args) {
-    const childElement = this.$(selector)
-    return childElement.evaluate(pageFunction, ...args)
+    const childElement = await this.$(selector)
+    return await childElement.evaluate(pageFunction, ...args)
   }
 
   async $x(expression) {
@@ -56,12 +56,15 @@ class LutkarElement {
 
   async children() {
     const childrenHandle = await this.evaluateHandle((element) => element.children)
-    const childrenCollection = await childrenHandle.getProperties()
+    const childrenProperties = await childrenHandle.getProperties()
     const children = []
 
-    childrenCollection.forEach((child) => {
-      children.push(LutkarHelper.lutkarifyElement(child))
-    })
+    for (const childProperty of childrenProperties.values()) {
+      const childElement = childProperty.asElement()
+      if (childElement) {
+        children.push(LutkarHelper.lutkarifyElement(childElement))
+      }
+    }
 
     return children
   }
@@ -282,12 +285,16 @@ class LutkarElement {
     await this.validateTagName('select')
 
     const selectedHandle = await this.evaluateHandle((element) => element.selectedOptions)
-    const selectedCollection = await selectedHandle.getProperties()
+    const selectedProperties = await selectedHandle.getProperties()
     const selectedOptions = []
 
-    selectedCollection.forEach((selectedOption) => {
-      selectedOptions.push(LutkarHelper.lutkarifyElement(selectedOption))
-    })
+    for (const selectedProperty of selectedProperties.values()) {
+      const selectedOption = selectedProperty.asElement()
+
+      if (selectedOption) {
+        selectedOptions.push(LutkarHelper.lutkarifyElement(selectedOption))
+      }
+    }
 
     if (by) {
       const bySelected = []

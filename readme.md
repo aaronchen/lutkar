@@ -19,6 +19,11 @@ It also brings in __implicit wait__ to most of `Page` methods to minimize the ne
 
 - `helpers/`: Chromium (Puppeteer/Chromium), Mocha (mocha.js), Utilities, etc
 - `plugins/`: lutkar (Puppeteer plugin)
+- `plugins/lutkar/LutkarBrowser.js`: Extend `Browser` functionality
+  - `plugins/lutkar/LutkarElement.js`: Extend `ElementHandle` functionality
+  - `plugins/lutkar/LutkarPage.js`: Extend `Page` functionality
+  - `plugins/lutkar/LutkarPageFrame.js`: Extend common `Page` and `Frame` functionality
+  - `plugins/lutkar/Storage.js`: Add `localStorage` and `sessionStorage` to `Page`
 - `pages/`: Page Objects
 - `test/`: Test suites (*.spec.js)
 

@@ -19,13 +19,13 @@ It also brings in __implicit wait__ to most of `Page` methods to minimize the ne
 # Structure
 
 - `helpers/`:
-  - `helpers/chrome.js`: __Chromium__ browser
+  - `helpers/chromium.js`: __Chromium__ browser with __Lutkar__ plugin
   - `helpers/mocha.js`: __Mocha Hook__ and __global variables__ for test suites
   - `helpers/Utils.js`: Utilities
   - `helpers/YML.js`: Read __YAML__
 - `pages/`: Page objects
 - `plugins/`:
-  - `plugins/lutkar.js`: lutkar plugin (__puppeteer-extra-plugin__)
+  - `plugins/lutkar.js`: __Lutkar__ plugin (__puppeteer-extra-plugin__)
     - `plugins/lutkar/LutkarBrowser.js`: Extend `Browser` functionality
     - `plugins/lutkar/LutkarElement.js`: Extend `ElementHandle` functionality
     - `plugins/lutkar/LutkarFrame.js`: Extend `Frame` functionality
@@ -55,6 +55,28 @@ describe('Google', function () {
     await page.screenshot('./screens/google.png')
   })
 })
+```
+
+# Test Case
+
+```javascript
+// sample.js:  Just to use chromium.js for test cases.
+// To run: `node sample.js`
+import chromium from './helpers/chromium.js'
+
+const browser = await chromium()
+const page = await browser.newPage()
+
+await page.goto('https://www.google.com')
+await page.type('[name="q"]', 'puppeteer')
+await page.keyboard.press('Enter')
+await page.click('[role="navigation"] .fl:eq(3)') // Go to page 5 of navigation
+
+await page.scrollIntoView('#footcnt')
+await page.drawRectangle('[role="navigation"] table')
+await page.screenshot('./screens/google.png') // Screenshot of page navigation
+
+await browser.close()
 ```
 
 

@@ -100,7 +100,7 @@ class LutkarPageFrame {
   async clickAndWait(selector, clickOptions = {}, waitOptions = {}) {
     return await Promise.all([
       this.waitForNavigation(),
-      this.waitForClickable(selector, waitOptions).then((el) => el.click(clickOptions))
+      this.waitForClickable(selector, waitOptions).then(async (el) => await el.click(clickOptions))
     ]).then((values) => values[1])
   }
 
@@ -234,11 +234,7 @@ class LutkarPageFrame {
     return await element.rightClick(clickOptions)
   }
 
-  async scrollIntoView(
-    selector,
-    options = { behavior: 'instant', block: 'center', inline: 'center' },
-    waitOptions = {}
-  ) {
+  async scrollIntoView(selector, options = { behavior: 'auto', block: 'center', inline: 'center' }, waitOptions = {}) {
     const element = await this.wait(selector, waitOptions)
     await element.scrollIntoView(options)
   }
@@ -385,6 +381,7 @@ class LutkarPageFrame {
 
   async waitForClickable(selector, waitOptions = {}) {
     const element = await this.wait(selector, waitOptions)
+    await element._scrollIntoViewIfNeeded()
 
     return await this.waitForFunction(
       (element) => {

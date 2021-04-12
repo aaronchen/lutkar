@@ -260,7 +260,7 @@ class LutkarElement {
     return await this.click({ ...clickOptions, button: 'right' })
   }
 
-  async scrollIntoView(options = { behavior: 'instant', block: 'center', inline: 'center' }) {
+  async scrollIntoView(options = { behavior: 'auto', block: 'center', inline: 'center' }) {
     await this.evaluate((element, options) => element.scrollIntoView(options), options)
   }
 
@@ -339,7 +339,7 @@ class LutkarElement {
   }
 
   async textContent() {
-    return await this.evaluate((element) => element.textContent())
+    return await this.evaluate((element) => element.textContent)
   }
 
   async toggleAttribute(attribute) {

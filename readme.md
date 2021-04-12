@@ -75,8 +75,9 @@ await page.keyboard.press('Enter')
 await page.click('[role="navigation"] .fl:eq(3)') // Go to page 5 of navigation
 // Navigating to a new page (No explicit wait required)
 
-await page.scrollIntoView('#footcnt')
-await page.drawRectangle('[role="navigation"] table')
+const navigation = await page.$('[role="navigation"] table')
+await navigation.scrollIntoView()
+await navigation.drawRectangle()
 await page.screenshot('./screens/google.png') // Screenshot of page 5 navigation
 
 await browser.close()

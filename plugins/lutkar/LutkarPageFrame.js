@@ -20,13 +20,28 @@ class LutkarPageFrame {
       }
     }
 
-    const element = await this.__$(selector)
-    return LutkarHelper.lutkarifyElement(element)
+    try {
+      const element = await this.__$(selector)
+      return LutkarHelper.lutkarifyElement(element)
+    } catch (e) {
+      if (e.message.includes('Execution context was destroyed')) {
+        return await this.waitForSelector(selector)
+      }
+      throw e
+    }
   }
 
   async $$(selector) {
-    const elements = await this.__$$(selector)
-    return LutkarHelper.lutkarifyElements(elements)
+    try {
+      const elements = await this.__$$(selector)
+      return LutkarHelper.lutkarifyElements(elements)
+    } catch (e) {
+      if (e.message.includes('Execution context was destroyed')) {
+        await this.waitForSelector(selector)
+        return await this.$$(selector)
+      }
+      throw e
+    }
   }
 
   async $find(selector) {
@@ -38,8 +53,15 @@ class LutkarPageFrame {
   }
 
   async $x(expression) {
-    const elements = await this.__$x(expression)
-    return LutkarHelper.lutkarifyElements(elements)
+    try {
+      const elements = await this.__$x(expression)
+      return LutkarHelper.lutkarifyElements(elements)
+    } catch (e) {
+      if (e.message.includes('Execution context was destroyed')) {
+        return await this.waitForXPath(expression)
+      }
+      throw e
+    }
   }
 
   async addClass(selector, cssClass, waitOptions = {}) {
@@ -433,7 +455,7 @@ class LutkarPageFrame {
 
     try {
       element = await this.wait(selector, { visible: true, timeout: timeout })
-    } catch (err) {}
+    } catch (e) {}
 
     if (element) {
       await this.waitForHidden(selector, loadingTimeout)

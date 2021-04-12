@@ -70,11 +70,14 @@ const page = await browser.newPage()
 await page.goto('https://www.google.com')
 await page.type('[name="q"]', 'puppeteer')
 await page.keyboard.press('Enter')
+// Navigating to a new page (No explicit wait required)
+
 await page.click('[role="navigation"] .fl:eq(3)') // Go to page 5 of navigation
+// Navigating to a new page (No explicit wait required)
 
 await page.scrollIntoView('#footcnt')
 await page.drawRectangle('[role="navigation"] table')
-await page.screenshot('./screens/google.png') // Screenshot of page navigation
+await page.screenshot('./screens/google.png') // Screenshot of page 5 navigation
 
 await browser.close()
 ```

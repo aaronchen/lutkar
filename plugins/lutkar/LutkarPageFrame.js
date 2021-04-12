@@ -234,7 +234,11 @@ class LutkarPageFrame {
     return await element.rightClick(clickOptions)
   }
 
-  async scrollIntoView(selector, options = { behavior: 'auto', block: 'start', inline: 'nearest' }, waitOptions = {}) {
+  async scrollIntoView(
+    selector,
+    options = { behavior: 'instant', block: 'center', inline: 'center' },
+    waitOptions = {}
+  ) {
     const element = await this.wait(selector, waitOptions)
     await element.scrollIntoView(options)
   }

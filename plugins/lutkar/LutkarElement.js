@@ -260,7 +260,7 @@ class LutkarElement {
     return await this.click({ ...clickOptions, button: 'right' })
   }
 
-  async scrollIntoView(options = { behavior: 'auto', block: 'start', inline: 'nearest' }) {
+  async scrollIntoView(options = { behavior: 'instant', block: 'center', inline: 'center' }) {
     await this.evaluate((element, options) => element.scrollIntoView(options), options)
   }
 

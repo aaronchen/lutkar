@@ -1,6 +1,7 @@
 # Install
 
 ```
+git clone https://github.com/aaronchen/lutkar.git
 cd lutkar
 npm install
 ```
@@ -34,7 +35,7 @@ It also brings in __implicit wait__ to most of `Page` methods to minimize the ne
     - `plugins/lutkar/LutkarTarget.js`: Extend `Target` functionality
     - `plugins/lutkar/Storage.js`: Add `localStorage` and `sessionStorage` to `Page`
 - `test/`: Test suites (*.spec.js)
-- `.mocharc.yml`: __Mocha__ configuration
+- `.mocharc.yml`: `mocha` configuration
 
 # Test Suite
 

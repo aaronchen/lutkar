@@ -60,7 +60,7 @@ describe('Google', function () {
 # Test Case
 
 ```javascript
-// sample.js:  Just to use chromium.js for test cases.
+// sample.js:  Just use chromium.js for automation.
 // To run: `node sample.js`
 import chromium from './helpers/chromium.js'
 

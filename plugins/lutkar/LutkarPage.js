@@ -10,15 +10,6 @@ class LutkarPage extends LutkarPageFrame {
   async $frame(selector, waitOptions = {}) {
     const frameElement = await this.wait(selector, waitOptions)
 
-    // await this.waitForFunction(
-    //   (element) => {
-    //     const frameDocument = element.contentDocument || element.contentWindow.document
-    //     return frameDocument.readyState == 'complete'
-    //   },
-    //   {},
-    //   frameElement
-    // )
-
     let frame = await frameElement.contentFrame()
 
     LutkarHelper.lutkarifyFrame(frame)
@@ -39,11 +30,6 @@ class LutkarPage extends LutkarPageFrame {
 
     return await this.waitForPromise(promise, 'acceptAlert timed-out')
   }
-
-  // browser() {
-  //   const browser = this.__browser()
-  //   return LutkarHelper.lutkarifyBrowser(browser)
-  // }
 
   async copyToClipboard(text) {
     await this.evaluate((text) => {
@@ -87,11 +73,6 @@ class LutkarPage extends LutkarPageFrame {
 
     return await this.__screenshot({ ...options, path: path })
   }
-
-  // target() {
-  //   const target = this.__target()
-  //   return LutkarHelper.lutkarifyTarget(target)
-  // }
 
   async waitForTitleIncludes(title) {
     return this.waitForFunction((title) => document.title.includes(title), {}, title)

@@ -156,6 +156,11 @@ class LutkarPageFrame {
     return await element.firstChild()
   }
 
+  async focus(selector, waitOptions = {}) {
+    const element = await this.wait(selector, waitOptions)
+    return await element.focus()
+  }
+
   async getAttribute(selector, attribute, waitOptions = {}) {
     const element = await this.wait(selector, { visible: false, ...waitOptions })
     return await element.getAttribute(attribute)
@@ -189,6 +194,11 @@ class LutkarPageFrame {
   async hide(selector, waitOptions = {}) {
     const element = await this.wait(selector, waitOptions)
     await element.hide()
+  }
+
+  async hover(selector, waitOptions = {}) {
+    const element = await this.wait(selector, waitOptions)
+    return await element.hover()
   }
 
   async isDisplayed(selector, timeout = 2000) {

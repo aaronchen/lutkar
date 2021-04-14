@@ -10,7 +10,9 @@ npm install
 
 Lutkar is based on `puppeteer`, and uses  `puppeteer-extra` and `puppeteer-extra-plugin` to enhance its automation features.
 
-It also brings in __implicit wait__ to `Page` and `Frame` methods to minimize the need to use __explicit wait__.  
+It overrides [Page](https://pptr.dev/#?product=Puppeteer&version=main&show=api-class-page) and [Frame](https://pptr.dev/#?product=Puppeteer&version=main&show=api-class-frame) objects to add additional methods, bring in __implicit wait__, and minimizes the need to use __explicit wait__.
+
+It also overrides [ElementHandle](https://pptr.dev/#?product=Puppeteer&version=main&show=api-class-elementhandle) to add more Element methods.
 
 # Test Framework: Mocha.js
 

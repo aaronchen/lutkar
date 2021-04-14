@@ -10,7 +10,7 @@ npm install
 
 Lutkar is based on `puppeteer`, and uses  `puppeteer-extra` and `puppeteer-extra-plugin` to enhance its automation features.
 
-It also brings in __implicit wait__ to most of `Page` methods to minimize the need to use __explicit wait__.  
+It also brings in __implicit wait__ to `Page` and `Frame` methods to minimize the need to use __explicit wait__.  
 
 # Test Framework: Mocha.js
 
@@ -25,15 +25,16 @@ It also brings in __implicit wait__ to most of `Page` methods to minimize the ne
   - `helpers/YML.js`: Read __YAML__
 - `pages/`: Page objects
 - `plugins/`:
-  - `plugins/lutkar.js`: __Lutkar__ plugin (__puppeteer-extra-plugin__)
-    - `plugins/lutkar/LutkarBrowser.js`: Extend `Browser` functionality
-    - `plugins/lutkar/LutkarElement.js`: Extend `ElementHandle` functionality
-    - `plugins/lutkar/LutkarFrame.js`: Extend `Frame` functionality
-    - `plugins/lutkar/LutkarHelper.js`: Helper
-    - `plugins/lutkar/LutkarPage.js`: Extend `Page` functionality
-    - `plugins/lutkar/LutkarPageFrame.js`: Extend common `Page` and `Frame` functionality
-    - `plugins/lutkar/LutkarTarget.js`: Extend `Target` functionality
-    - `plugins/lutkar/Storage.js`: Add `localStorage` and `sessionStorage` to `Page`
+  - [lutkar.js](https://github.com/aaronchen/lutkar/blob/main/plugins/lutkar.js): __Lutkar__ plugin (__puppeteer-extra-plugin__)
+  - `lutkar/`
+    - [LutkarBrowser.js](https://github.com/aaronchen/lutkar/blob/main/plugins/lutkar/LutkarBrowser.js): Extend `Browser` functionality
+    - [LutkarElement.js](https://github.com/aaronchen/lutkar/blob/main/plugins/lutkar/LutkarElement.js): Extend `ElementHandle` functionality
+    - [LutkarFrame.js](https://github.com/aaronchen/lutkar/blob/main/plugins/lutkar/LutkarFrame.js): Extend `Frame` functionality
+    - [LutkarHelper.js](https://github.com/aaronchen/lutkar/blob/main/plugins/lutkar/LutkarHelper.js): Helper
+    - [LutkarPage.js](https://github.com/aaronchen/lutkar/blob/main/plugins/lutkar/LutkarPage.js): Extend `Page` functionality
+    - [LutkarPageFrame.js](https://github.com/aaronchen/lutkar/blob/main/plugins/lutkar/LutkarPageFrame.js): Extend common `Page` and `Frame` functionality
+    - [LutkarTarget.js](https://github.com/aaronchen/lutkar/blob/main/plugins/lutkar/LutkarTarget.js): Extend `Target` functionality
+    - [Storage.js](https://github.com/aaronchen/lutkar/blob/main/plugins/lutkar/Storage.js): Add `localStorage` and `sessionStorage` methods to `Page`
 - `test/`: Test suites (*.spec.js)
 - `.mocharc.yml`: `mocha` configuration
 

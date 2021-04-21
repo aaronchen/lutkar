@@ -38,7 +38,7 @@ It also overrides [ElementHandle](https://pptr.dev/#?product=Puppeteer&version=m
     - [LutkarTarget.js](https://github.com/aaronchen/lutkar/blob/main/plugins/lutkar/LutkarTarget.js): Extend `Target` functionality
     - [Storage.js](https://github.com/aaronchen/lutkar/blob/main/plugins/lutkar/Storage.js): Add `localStorage` and `sessionStorage` methods to `Page`
 - `test/`: Test suites (*.spec.js)
-- `.mocharc.yml`: `mocha` configuration
+- [.mocharc.yml](https://github.com/aaronchen/lutkar/blob/main/.mocharc.yml): `mocha` configuration
 
 # Test Suite
 

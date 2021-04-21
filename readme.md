@@ -21,10 +21,10 @@ It also overrides [ElementHandle](https://pptr.dev/#?product=Puppeteer&version=m
 # Structure
 
 - `helpers/`:
-  - `helpers/chromium.js`: __Chromium__ browser with __Lutkar__ plugin
-  - `helpers/mocha.js`: __Mocha Hook__ and __global variables__ for test suites
-  - `helpers/Utils.js`: Utilities
-  - `helpers/YML.js`: Read __YAML__
+  - [chromium.js](https://github.com/aaronchen/lutkar/blob/main/helpers/chromium.js): __Chromium__ browser with __Lutkar__ plugin
+  - [mocha.js](https://github.com/aaronchen/lutkar/blob/main/helpers/mocha.js): __Mocha Hook__ and __global variables__ for test suites
+  - [Utils.js](https://github.com/aaronchen/lutkar/blob/main/helpers/Utils.js): Utilities
+  - [YML.js](https://github.com/aaronchen/lutkar/blob/main/helpers/YML.js): Read __YAML__
 - `pages/`: Page objects
 - `plugins/`:
   - [lutkar.js](https://github.com/aaronchen/lutkar/blob/main/plugins/lutkar.js): __Lutkar__ plugin (__puppeteer-extra-plugin__)

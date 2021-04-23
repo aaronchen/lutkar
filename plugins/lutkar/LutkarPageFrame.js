@@ -44,6 +44,11 @@ class LutkarPageFrame {
     }
   }
 
+  async $eval(selector, pageFunction, ...args) {
+    const element = await this.$(selector)
+    return await element.evaluate(pageFunction, ...args)
+  }
+
   async $find(selector) {
     if (LutkarHelper.isXPath(selector)) {
       return await this.$x(selector)
@@ -397,8 +402,13 @@ class LutkarPageFrame {
         await this.waitForSelector(parsed.selector, waitOptions)
         // Second, get all elements by `parsed.selector`
         const elements = await this.$$(parsed.selector)
-        // Third, filter elements by `waitOptions.visible`
-        const waitedElements = elements.filter((element) => waitOptions.visible == (element.boundingBox() != null))
+        // Third, filter elements by `waitOptions.visible` or `waitOptions.hidden`
+        const waitedElements = elements.filter((element) => {
+          return (
+            (waitOptions.visible != undefined && (waitOptions.visible == false || element.boundingBox() != null)) ||
+            (waitOptions.hidden && element.boundingBox() == null)
+          )
+        })
 
         if (waitedElements.length > parsed.index) {
           return waitedElements[parsed.index]

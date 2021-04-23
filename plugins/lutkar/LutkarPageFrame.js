@@ -466,6 +466,11 @@ class LutkarPageFrame {
     return element
   }
 
+  async waitForHavingClass(selector, className, waitOptions = {}) {
+    const element = await this.wait(selector, waitOptions)
+    await this.waitForFunction((element, className) => element.classList.contains(className), {}, element, className)
+  }
+
   async waitForHidden(selector, timeout) {
     return this.wait(selector, { hidden: true, timeout: timeout || this._timeoutSettings.timeout() })
   }

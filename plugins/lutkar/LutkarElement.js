@@ -19,8 +19,10 @@ class LutkarElement {
       }
     }
 
-    const element = await this.__$(selector)
-    return LutkarHelper.lutkarifyElement(element)
+    const page = this._page || this._frameManager._page
+    await page.waitForFunction((element, selector) => element.querySelector(selector) != null, {}, this, selector)
+    const childElement = await this.__$(selector)
+    return LutkarHelper.lutkarifyElement(childElement)
   }
 
   async $$(selector) {
